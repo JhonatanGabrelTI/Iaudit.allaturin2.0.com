@@ -2,20 +2,18 @@ version: '3.8'
 
 services:
   backend:
-    build: .
-    container_name: iaudit_backend
+    image: SEU_USUARIO/iaudit-backend:latest
     ports:
       - "3001:3001"
     environment:
       - PORT=3001
       - DATABASE_URL=postgresql://postgres:password@db:5432/iaudit
-      - NODE_ENV=development
+      - NODE_ENV=production
     depends_on:
       - db
 
   db:
     image: postgres:15-alpine
-    container_name: iaudit_db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
