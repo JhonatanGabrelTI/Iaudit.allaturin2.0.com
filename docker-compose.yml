@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    # Como você ainda não tem a imagem no DockerHub, 
-    # use uma imagem genérica apenas para testar se o deploy passa
-    image: node:18-alpine 
+    image: node:18-alpine
     ports:
       - "3001:3001"
     environment:
@@ -21,12 +19,9 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: iaudit
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
 
 volumes:
   postgres_data:
