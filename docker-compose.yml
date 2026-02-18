@@ -2,18 +2,18 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend
+    # AQUI ESTÁ O SEGREDO: O Portainer precisa de uma imagem real.
+    # Se você ainda não subiu para o Docker Hub, use um nome temporário aqui.
+    image: jhonatangabrelti/laudit-backend:latest 
     ports:
       - "3001:3001"
     environment:
       - PORT=3001
+      # Ajustei a senha para 'password' para bater com o serviço 'db' abaixo
       - DATABASE_URL=postgresql://postgres:password@db:5432/iaudit
       - NODE_ENV=development
     depends_on:
       - db
-    volumes:
-      - ./backend:/usr/src/app
-      - /usr/src/app/node_modules
 
   db:
     image: postgres:15-alpine
