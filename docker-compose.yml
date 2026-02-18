@@ -3,6 +3,7 @@ version: '3.8'
 services:
   backend:
     image: node:18-alpine
+    command: sh -c "npm install && npm start"  # ESTA LINHA É A CHAVE!
     ports:
       - "3001:3001"
     environment:
